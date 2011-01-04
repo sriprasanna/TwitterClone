@@ -7,22 +7,15 @@ gem 'rails', '3.0.1'
 
 gem 'mysql2'
 gem 'jquery-rails'
-gem 'haml'
-gem 'haml-rails'
 gem 'will_paginate'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 group :development, :test do
   gem "nifty-generators"
   gem 'hirb'
-  gem 'metric_fu'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'cucumber'
-  gem 'spork'
-  gem 'launchy'
+  gem "mocha"
 end
 
 # Use unicorn as the web server
