@@ -51,4 +51,24 @@ describe UsersController do
     put :update, :id => "ignored"
     response.should redirect_to("/")
   end
+
+  it "show action should render profile page" do
+    user = User.last
+    User.stubs(:find).returns(user)
+    get :show, :id => "1"
+    assigns(:user).should == user
+    assigns(:tweets).should == user.tweets
+    response.should be_success
+  end
+
+  it "home action should render home page for current user" do
+    @controller.stubs(:current_user).returns(User.first)
+    get :home
+    response.should be_success
+  end
+
+  it "home action should redirect to login page when not logged in" do
+    get :home
+    response.should redirect_to(login_url)
+  end
 end

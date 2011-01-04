@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required, :except => [:new, :create, :show]
+
+  def home
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @tweets = @user.tweets.paginate(:per_page => 20, :page => params[:page])
+  end
 
   def new
     @user = User.new
