@@ -1,4 +1,7 @@
 TwitterClone::Application.routes.draw do
+
+  root :to => "users#home"
+
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup
@@ -12,6 +15,9 @@ TwitterClone::Application.routes.draw do
   resources :users do
     collection do
       get :home
+    end
+    member do
+      post :tweet
     end
   end
 

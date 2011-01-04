@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create, :show]
 
   def home
+    @tweets = Tweet.paginate(:per_page => 20, :page => params[:page])
+    @tweet = Tweet.new
   end
 
   def show
@@ -36,5 +38,11 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def tweet
+    tweet = Tweet.new(:user => current_user, :text => params[:tweet][:text])
+    flash[:notice] = "Tweet posted." if tweet.valid?
+    render :text => tweet.save
   end
 end

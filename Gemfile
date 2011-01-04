@@ -7,7 +7,7 @@ gem 'rails', '3.0.1'
 
 gem 'mysql2'
 gem 'jquery-rails'
-gem 'will_paginate'
+gem 'will_paginate', '3.0.pre2'
 gem "bcrypt-ruby", :require => "bcrypt"
 
 group :development, :test do

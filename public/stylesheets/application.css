@@ -73,3 +73,40 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+#tweet_length{
+  position: relative;
+  bottom: 15px;
+}
+
+#tweet_this{
+  display: block;
+  margin: 10px 0;
+}
+
+#tweet_list{
+  margin: 20px 0;
+  padding: 0;
+}
+
+#tweet_list li{
+  list-style: none;
+  overflow: hidden;
+  padding: 10px;
+  border-bottom: 1px solid;
+}
+
+#tweet_list li:hover{
+  background-color: #cad4de;
+}
+
+#tweet_list li a{
+  float: left;
+  margin-right: 10px;
+}
+
+#tweet_list li span.time{
+  font-size: 10px;
+  color: grey;
+  display: block;
+}

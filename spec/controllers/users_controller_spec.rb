@@ -64,11 +64,22 @@ describe UsersController do
   it "home action should render home page for current user" do
     @controller.stubs(:current_user).returns(User.first)
     get :home
+    assigns(:tweets).should == Tweet.all
     response.should be_success
   end
 
   it "home action should redirect to login page when not logged in" do
     get :home
     response.should redirect_to(login_url)
+  end
+
+  it "tweet action should add a tweet and return saved status as json" do
+    @controller.stubs(:current_user).returns(User.first)
+    tweet = Tweet.new
+    Tweet.stubs(:new).returns(tweet)
+    tweet.stubs(:save).returns(true)
+    post :tweet, :id => 1, :tweet => {:text => "this is a tweet"}
+    response.should be_success
+    response.body.should == "true"
   end
 end
